@@ -1,6 +1,8 @@
 package com.colacco.finance.Models;
 
+import com.colacco.finance.DTO.TransactionPUTDTO;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,5 +34,9 @@ public class Transaction{
         this.value = value;
         this.transactionType = transactionType;
         this.user = user;
+    }
+
+    public void update(@Valid TransactionPUTDTO transactionPUTDTO) {
+        this.value = transactionPUTDTO.value();
     }
 }

@@ -1,15 +1,19 @@
 package com.colacco.finance.Models;
 
+import com.colacco.finance.DTO.UserDTO;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "users")
 @Getter @Setter
+@NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class User{
 
@@ -20,11 +24,11 @@ public class User{
 
     private String password;
 
-    @OneToMany(mappedBy = "usuarioId")
+    @OneToMany(mappedBy = "user")
     private List<Transaction> transacaoList = new ArrayList<>();
 
-    public User(String username, String password){
-        this.username = username;
-        this.password = password;
+    public User(UserDTO dados) {
+        this.username = dados.username();
+        this.password = dados.password();
     }
 }

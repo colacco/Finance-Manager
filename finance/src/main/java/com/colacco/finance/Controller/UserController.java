@@ -1,5 +1,6 @@
 package com.colacco.finance.Controller;
 
+import com.colacco.finance.DTO.IdDTO;
 import com.colacco.finance.DTO.UserDTO;
 import com.colacco.finance.DTO.UserOutputDTO;
 import com.colacco.finance.DTO.UserUpdateDTO;
@@ -8,7 +9,6 @@ import com.colacco.finance.Repository.UserRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,8 +33,15 @@ public class UserController {
         user.update(data);
     }
 
+    @DeleteMapping("/delete")
+    @Transactional
+    public void delete(@RequestBody @Valid IdDTO idDTO){
+        User user = repository.getReferenceById(idDTO.id());
+        user.delete();
+    }
+
     @GetMapping("/list")
     public List<UserOutputDTO> listar(){
-        return repository.findAll().stream().map(UserOutputDTO::new).toList();
+        return repository.findByActiveTrue().stream().map(UserOutputDTO::new).toList();
     }
 }

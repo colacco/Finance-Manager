@@ -28,9 +28,12 @@ public class User{
     @OneToMany(mappedBy = "user")
     private List<Transaction> transacaoList = new ArrayList<>();
 
+    private boolean active;
+
     public User(UserDTO dados) {
         this.username = dados.username();
         this.password = dados.password();
+        this.active = true;
     }
 
     public void update(UserUpdateDTO data) {
@@ -41,5 +44,9 @@ public class User{
         if (data.password() != null){
             this.password = data.password();
         }
+    }
+
+    public void delete() {
+        this.active = false;
     }
 }

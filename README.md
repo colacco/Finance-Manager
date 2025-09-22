@@ -94,9 +94,9 @@ Transaction (/{usuarioId}):
 1. Clone the repository
 2. Configure ```application.properties``` (or environment variables):
 ```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/finance_db
-spring.datasource.username=seu_usuario
-spring.datasource.password=sua_senha
+spring.datasource.url=jdbc:postgresql://localhost:8080/finance_db
+spring.datasource.username=your_user
+spring.datasource.password=your_pass
 ```
 3. Run migrations (Flyway)
 4. Start the application with Maven:

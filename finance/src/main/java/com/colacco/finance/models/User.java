@@ -1,7 +1,7 @@
-package com.colacco.finance.Models;
+package com.colacco.finance.models;
 
-import com.colacco.finance.DTO.UserDTO;
-import com.colacco.finance.DTO.UserUpdateDTO;
+import com.colacco.finance.dto.UserDTO;
+import com.colacco.finance.dto.UserUpdateDTO;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -1,6 +1,6 @@
-package com.colacco.finance.Models;
+package com.colacco.finance.models;
 
-import com.colacco.finance.DTO.TransactionPUTDTO;
+import com.colacco.finance.dto.TransactionPUTDTO;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.EqualsAndHashCode;

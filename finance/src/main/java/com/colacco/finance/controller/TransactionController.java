@@ -1,12 +1,12 @@
-package com.colacco.finance.Controller;
+package com.colacco.finance.controller;
 
-import com.colacco.finance.DTO.TransactionDTO;
-import com.colacco.finance.DTO.TransactionOutputDTO;
-import com.colacco.finance.DTO.TransactionPUTDTO;
-import com.colacco.finance.Models.Transaction;
-import com.colacco.finance.Models.TransactionType;
-import com.colacco.finance.Repository.TransactionRepository;
-import com.colacco.finance.Repository.UserRepository;
+import com.colacco.finance.dto.TransactionDTO;
+import com.colacco.finance.dto.TransactionOutputDTO;
+import com.colacco.finance.dto.TransactionPUTDTO;
+import com.colacco.finance.models.Transaction;
+import com.colacco.finance.models.TransactionType;
+import com.colacco.finance.repository.TransactionRepository;
+import com.colacco.finance.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

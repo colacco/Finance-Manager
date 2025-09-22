@@ -1,6 +1,6 @@
-package com.colacco.finance.DTO;
+package com.colacco.finance.dto;
 
-import com.colacco.finance.Models.Transaction;
+import com.colacco.finance.models.Transaction;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;

@@ -1,6 +1,6 @@
-package com.colacco.finance.DTO;
+package com.colacco.finance.dto;
 
-import com.colacco.finance.Models.User;
+import com.colacco.finance.models.User;
 
 public record UserOutputDTO (Long id, String username, String password){
     public UserOutputDTO(User user) {

@@ -1,7 +1,7 @@
-package com.colacco.finance.Repository;
+package com.colacco.finance.repository;
 
-import com.colacco.finance.Models.Transaction;
-import com.colacco.finance.Models.User;
+import com.colacco.finance.models.Transaction;
+import com.colacco.finance.models.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

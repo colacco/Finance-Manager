@@ -1,11 +1,11 @@
-package com.colacco.finance.Controller;
+package com.colacco.finance.controller;
 
-import com.colacco.finance.DTO.IdDTO;
-import com.colacco.finance.DTO.UserDTO;
-import com.colacco.finance.DTO.UserOutputDTO;
-import com.colacco.finance.DTO.UserUpdateDTO;
-import com.colacco.finance.Models.User;
-import com.colacco.finance.Repository.UserRepository;
+import com.colacco.finance.dto.IdDTO;
+import com.colacco.finance.dto.UserDTO;
+import com.colacco.finance.dto.UserOutputDTO;
+import com.colacco.finance.dto.UserUpdateDTO;
+import com.colacco.finance.models.User;
+import com.colacco.finance.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

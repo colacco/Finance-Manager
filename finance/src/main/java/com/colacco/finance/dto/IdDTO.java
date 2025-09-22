@@ -1,4 +1,4 @@
-package com.colacco.finance.DTO;
+package com.colacco.finance.dto;
 
 import jakarta.validation.constraints.NotNull;
 

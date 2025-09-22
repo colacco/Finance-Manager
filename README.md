@@ -1,11 +1,13 @@
 # Finance-Manager
-Back-end REST API Java (Spring), created as a study and practice project. 
+Back-end REST API Java (Spring), **created as a study and practice project**. 
 Finance Manager — a web application to practice back-end concepts, REST APIs and database integration.
 
-## About Project
+![Rafael Account](https://github.com/colacco/Finance-Manager/blob/main/images/userRafael.png)
+
+## 📋 About Project
 This project was developed as a study application to practice concepts about back-end concepts such as REST APIs, PostgreSQL integration, database migrations and HTTP methods. The Front-end was generated with AI to provide interaction with te API wich allowed me to folly focus on learning and developing the backwnd. 
 
-## Technologies Used
+## 🛠️ Technologies Used
 
 ### Back-end
 - Java 21
@@ -18,7 +20,7 @@ This project was developed as a study application to practice concepts about bac
 - CSS3
 - JavaScript
 
-## Features
+## 💡 Features
 - User Autentication
 - Transaction management (full CRUD)
 - Transaction types (INPUT, OUTPUT)
@@ -26,32 +28,10 @@ This project was developed as a study application to practice concepts about bac
 - Balance validartion (prevents negative balance where applicable)
 - User transaction history
 
-## Archtecture
+## 🏗️ Archtecture
 Main structure(```src/main/java/com/colacco/finance```)
-```
-src/main/java/com/colacco/finance/
-├── config/
-|   └── CorsConfiguration.java
-├── controller/
-│   ├── TransactionController.java
-|   └── UserController.java
-├── dto/
-|   ├── IdDTO.java
-│   ├── TransactionDTO.java
-│   ├── TransactionOutputDTO.java
-│   ├── TransactionPUTDTO.java
-|   ├── UserDTO.java
-|   ├── UserOutput.java
-|   └── UserUpdateDTO.java
-├── models/
-│   ├── Transaction.java
-│   ├── TransactionType.java
-│   └── User.java
-├── repository/
-|   ├── TransactionRepository.java
-|   └── UserRepository.java
-└── FinanceApplication.java
-```
+
+![archtecture](https://github.com/colacco/Finance-Manager/blob/main/images/archtecture.png)
 
 ## API Endpoints
 
@@ -62,6 +42,8 @@ User (/user):
   PUT      /update           # Update user
   DELETE   /delete           # Delete user
 ```
+
+![GET user list](https://github.com/colacco/Finance-Manager/blob/main/images/getUsers.png)
 Transaction (/{usuarioId}):
 ```
   GET      /list             # List transactions (paged)
@@ -70,14 +52,15 @@ Transaction (/{usuarioId}):
   PUT                        # Update transaction
   DELETE   /{transactionId}  # Delete transaction
 ```
+![PUT transactions](https://github.com/colacco/Finance-Manager/blob/main/images/updateTransaction.png)
 
-## Project strengths
+## ✅ Project strengths
 - Input validation
 - Complete CRUD for transactions
 - Data integrity control
 - Basic user system
 
-## Identified Improvement Points
+## ⚠️ Identified Improvement Points
 ### Security:
    - Unencrypted passwords
    - Absence of JWT authentication
@@ -87,20 +70,20 @@ Transaction (/{usuarioId}):
    - No cache
    - Non-optimized queries
 
- ## Achieved Objectives:
+ ## 🎯 Achieved Objectives:
    - Create API REST
    - PostgreSQL integration
    - Full CRUD for transactions
    - Basic validations implemented
 
-## Next Steps:
+## 📈 Next Steps:
   - Implement Spring Security (authentication and authorization)
   - Hash passwords with BCrypt
   - Implement JWT for stateless authentication
   - Optimize queries and reduce balance() complexity 
   - Add unit and integration tests
 
-## 🚀 How to run
+## ▶️ How to run
 ### Prerequisites:
  - Java 21+
  - PostgreSQL
@@ -126,3 +109,5 @@ The frontend was developed entirely with AI, allowing full focus on the backend.
 - Focused on backend skills
 - Provided a functional interface for testing the API
 - More time for API refinement
+
+![Register user](https://github.com/colacco/Finance-Manager/blob/main/images/userRegister.png)

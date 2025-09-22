@@ -3,7 +3,6 @@
 <head>
  <meta charset="utf-8" />
  <title>Dashboard - Gerenciador Financeiro</title>
- 
  <style>
    * {
      margin: 0;
@@ -15,138 +14,111 @@
      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
      min-height: 100vh;
-     padding: 20px;
+     padding: 15px;
+     line-height: 1.5;
    }
 
    .container {
-     max-width: 1200px;
+     max-width: 1000px;
      margin: 0 auto;
      background: white;
-     border-radius: 16px;
-     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+     border-radius: 12px;
+     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
      overflow: hidden;
    }
 
+   /* Header */
    header {
      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
      color: white;
-     padding: 30px;
+     padding: 25px;
      display: flex;
      justify-content: space-between;
      align-items: center;
-     flex-wrap: wrap;
-     gap: 20px;
    }
 
    header h2 {
-     font-size: 2em;
+     font-size: 1.8em;
      font-weight: 600;
-     display: flex;
-     align-items: center;
-     gap: 10px;
    }
 
    header h2::before {
-     content: '💰';
-     font-size: 1.2em;
+     content: '💰 ';
    }
 
    .user-info {
      display: flex;
      align-items: center;
      gap: 15px;
-     background: rgba(255,255,255,0.1);
-     padding: 10px 20px;
-     border-radius: 25px;
-     backdrop-filter: blur(10px);
    }
 
    #userLabel {
      font-weight: 500;
+     background: rgba(255,255,255,0.15);
+     padding: 8px 15px;
+     border-radius: 20px;
+     display: flex;
+     align-items: center;
+     gap: 8px;
+     font-size: 0.95em;
+     border: 1px solid rgba(255,255,255,0.2);
    }
 
    #logoutBtn {
      background: rgba(255,255,255,0.2);
      color: white;
-     border: 2px solid rgba(255,255,255,0.3);
-     padding: 8px 16px;
+     border: 1px solid rgba(255,255,255,0.3);
+     padding: 8px 15px;
      border-radius: 20px;
      cursor: pointer;
-     font-weight: 500;
      transition: all 0.3s ease;
    }
 
    #logoutBtn:hover {
      background: rgba(255,255,255,0.3);
-     border-color: rgba(255,255,255,0.5);
-     transform: translateY(-1px);
    }
 
+   /* Balance Section */
    .balance-section {
-     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-     border-bottom: 3px solid #667eea;
-     padding: 30px;
+     background: #f8f9fa;
+     padding: 25px;
      text-align: center;
-     position: relative;
-   }
-
-   .balance-section::before {
-     content: '';
-     position: absolute;
-     top: 0;
-     left: 0;
-     right: 0;
-     height: 4px;
-     background: linear-gradient(90deg, #667eea, #764ba2);
+     border-bottom: 3px solid #667eea;
    }
 
    .balance-section h3 {
-     font-size: 1.3em;
      color: #495057;
      margin-bottom: 15px;
-     font-weight: 600;
+     font-size: 1.2em;
    }
 
    .balance-amount {
-     font-size: 2.5em;
+     font-size: 2.2em;
      font-weight: 700;
      margin: 15px 0;
-     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
    }
 
-   .balance-positive {
-     color: #28a745;
-     text-shadow: 2px 2px 4px rgba(40,167,69,0.2);
-   }
-
-   .balance-negative {
-     color: #dc3545;
-     text-shadow: 2px 2px 4px rgba(220,53,69,0.2);
-   }
-
-   .balance-zero {
-     color: #6c757d;
-   }
+   .balance-positive { color: #28a745; }
+   .balance-negative { color: #dc3545; }
+   .balance-zero { color: #6c757d; }
 
    #refreshBalanceBtn {
-     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+     background: #667eea;
      color: white;
      border: none;
      padding: 10px 20px;
-     border-radius: 25px;
+     border-radius: 20px;
      cursor: pointer;
-     font-weight: 500;
      transition: all 0.3s ease;
-     box-shadow: 0 4px 15px rgba(102,126,234,0.3);
    }
 
    #refreshBalanceBtn:hover {
-     transform: translateY(-2px);
-     box-shadow: 0 6px 20px rgba(102,126,234,0.4);
+     background: #5a6fd8;
    }
 
+   /* Sections */
    section {
-     padding: 30px;
+     padding: 25px;
      border-bottom: 1px solid #e9ecef;
    }
 
@@ -155,109 +127,90 @@
    }
 
    section h3 {
-     font-size: 1.5em;
      color: #495057;
      margin-bottom: 20px;
+     font-size: 1.3em;
      font-weight: 600;
-     position: relative;
-     padding-left: 15px;
+     padding-left: 10px;
+     border-left: 4px solid #667eea;
    }
 
-   section h3::before {
-     content: '';
-     position: absolute;
-     left: 0;
-     top: 50%;
-     transform: translateY(-50%);
-     width: 4px;
-     height: 20px;
-     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-     border-radius: 2px;
-   }
-
+   /* Form */
    #transacaoForm {
-     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+     display: flex;
+     flex-wrap: wrap;
      gap: 15px;
-     align-items: end;
      background: #f8f9fa;
-     padding: 25px;
-     border-radius: 12px;
+     padding: 20px;
+     border-radius: 8px;
      border: 1px solid #e9ecef;
    }
 
    #transacaoForm input,
    #transacaoForm select {
-     padding: 12px 15px;
-     border: 2px solid #e9ecef;
-     border-radius: 8px;
+     flex: 1;
+     min-width: 200px;
+     padding: 12px;
+     border: 1px solid #ced4da;
+     border-radius: 6px;
      font-size: 1em;
-     transition: all 0.3s ease;
-     background: white;
    }
 
    #transacaoForm input:focus,
    #transacaoForm select:focus {
      outline: none;
      border-color: #667eea;
-     box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+     box-shadow: 0 0 5px rgba(102,126,234,0.3);
    }
 
    #transacaoForm button {
-     padding: 12px 24px;
+     padding: 12px 20px;
      border: none;
-     border-radius: 8px;
+     border-radius: 6px;
      cursor: pointer;
      font-weight: 600;
-     font-size: 1em;
      transition: all 0.3s ease;
-     min-height: 46px;
    }
 
    #saveBtn {
-     background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+     background: #28a745;
      color: white;
-     box-shadow: 0 4px 15px rgba(40,167,69,0.3);
    }
 
    #saveBtn:hover {
-     transform: translateY(-1px);
-     box-shadow: 0 6px 20px rgba(40,167,69,0.4);
+     background: #218838;
    }
 
    #cancelEditBtn {
-     background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+     background: #6c757d;
      color: white;
-     box-shadow: 0 4px 15px rgba(108,117,125,0.3);
    }
 
    #cancelEditBtn:hover {
-     transform: translateY(-1px);
-     box-shadow: 0 6px 20px rgba(108,117,125,0.4);
+     background: #545b62;
    }
 
+   /* Transaction List */
    #listaTransacoes {
      list-style: none;
-     display: grid;
-     gap: 15px;
    }
 
    #listaTransacoes li {
      background: white;
      border: 1px solid #e9ecef;
-     border-radius: 12px;
+     border-radius: 8px;
      padding: 20px;
+     margin-bottom: 15px;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
      transition: all 0.3s ease;
-     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
    }
 
    #listaTransacoes li:hover {
-     transform: translateY(-2px);
-     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
      border-color: #667eea;
    }
 
-   #listaTransacoes li > div {
+   .transaction-container {
      display: flex;
      justify-content: space-between;
      align-items: center;
@@ -268,21 +221,21 @@
      flex: 1;
    }
 
-   .transaction-info strong {
+   .transaction-type {
      display: inline-block;
      padding: 4px 12px;
-     border-radius: 20px;
-     font-size: 0.85em;
+     border-radius: 15px;
+     font-size: 0.8em;
      font-weight: 600;
      margin-bottom: 8px;
    }
 
-   .transaction-info strong:contains('INPUT') {
+   .transaction-input {
      background: #d4edda;
      color: #155724;
    }
 
-   .transaction-info strong:contains('OUTPUT') {
+   .transaction-output {
      background: #f8d7da;
      color: #721c24;
    }
@@ -290,13 +243,13 @@
    .transaction-amount {
      font-size: 1.2em;
      font-weight: 600;
-     margin: 8px 0;
+     margin: 5px 0;
+     color: #495057;
    }
 
    .transaction-description {
      color: #6c757d;
      font-size: 0.9em;
-     margin-top: 5px;
    }
 
    .transaction-actions {
@@ -305,84 +258,63 @@
    }
 
    .editBtn, .delBtn {
-     padding: 8px 16px;
+     padding: 8px 15px;
      border: none;
      border-radius: 20px;
      cursor: pointer;
-     font-weight: 500;
      font-size: 0.9em;
      transition: all 0.3s ease;
    }
 
    .editBtn {
-     background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+     background: #007bff;
      color: white;
-     box-shadow: 0 2px 8px rgba(0,123,255,0.3);
    }
 
    .editBtn:hover {
-     transform: translateY(-1px);
-     box-shadow: 0 4px 12px rgba(0,123,255,0.4);
+     background: #0056b3;
    }
 
    .delBtn {
-     background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+     background: #dc3545;
      color: white;
-     box-shadow: 0 2px 8px rgba(220,53,69,0.3);
    }
 
    .delBtn:hover {
-     transform: translateY(-1px);
-     box-shadow: 0 4px 12px rgba(220,53,69,0.4);
+     background: #c82333;
    }
 
    .empty-state {
      text-align: center;
-     padding: 40px 20px;
+     padding: 40px;
      color: #6c757d;
+     background: #f8f9fa;
+     border-radius: 8px;
    }
 
-   .empty-state::before {
-     content: '📊';
-     font-size: 3em;
-     display: block;
-     margin-bottom: 15px;
-     opacity: 0.5;
-   }
-
+   /* Responsive */
    @media (max-width: 768px) {
      body {
        padding: 10px;
      }
 
      header {
-       padding: 20px;
+       flex-direction: column;
+       gap: 15px;
        text-align: center;
      }
 
-     header h2 {
-       font-size: 1.5em;
-     }
-
-     .user-info {
-       flex-direction: column;
-       gap: 10px;
-     }
-
      #transacaoForm {
-       grid-template-columns: 1fr;
-       padding: 20px;
+       flex-direction: column;
      }
 
-     .balance-amount {
-       font-size: 2em;
+     #transacaoForm input,
+     #transacaoForm select {
+       min-width: auto;
+       width: 100%;
      }
 
-     section {
-       padding: 20px;
-     }
-
-     #listaTransacoes li > div {
+     .transaction-container {
        flex-direction: column;
        align-items: stretch;
        gap: 15px;
@@ -390,6 +322,10 @@
 
      .transaction-actions {
        justify-content: center;
+     }
+
+     .balance-amount {
+       font-size: 1.8em;
      }
    }
 
@@ -400,7 +336,6 @@
 
      .editBtn, .delBtn {
        width: 100%;
-       justify-content: center;
      }
    }
  </style>
@@ -415,12 +350,11 @@
      </div>
    </header>
 
-   <!-- Seção do Saldo Total -->
-   <section class="balance-section">
+   <div class="balance-section">
      <h3>Saldo Atual</h3>
      <div id="balanceAmount" class="balance-amount">R$ 0,00</div>
      <button id="refreshBalanceBtn">Atualizar Saldo</button>
-   </section>
+   </div>
 
    <section>
      <h3>Novo / Editar Lançamento</h3>
@@ -432,7 +366,6 @@
          <option value="INPUT">Entrada</option>
          <option value="OUTPUT">Saída</option>
        </select>
-       <!-- descrição opcional caso queira -->
        <input type="text" id="descricao" placeholder="Descrição (opcional)">
        <button type="submit" id="saveBtn">Salvar</button>
        <button type="button" id="cancelEditBtn" style="display:none">Cancelar</button>

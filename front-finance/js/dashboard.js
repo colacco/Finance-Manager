@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const userId = localStorage.getItem("userId");
 
   if (!userId) {
-    window.location.href = "login.html";
+    window.location.href = "index.html";
     return;
   }
 
@@ -20,7 +20,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const balanceAmount = document.getElementById("balanceAmount");
   const refreshBalanceBtn = document.getElementById("refreshBalanceBtn");
 
-  userLabel.textContent = `Usuário ID: ${userId}`;
+  // Carregar e exibir informações do usuário
+  async function carregarUsuario() {
+    try {
+      const res = await doFetch(`${API_BASE}/user/list`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const users = await res.json();
+      const currentUser = users.find(user => user.id == userId);
+      
+      if (currentUser) {
+        userLabel.textContent = `👤 ${currentUser.username}`;
+      } else {
+        userLabel.textContent = `Usuário ID: ${userId}`;
+        console.warn("Usuário não encontrado na lista");
+      }
+    } catch (err) {
+      console.error("Erro ao carregar usuário:", err);
+      userLabel.textContent = `Usuário ID: ${userId}`;
+    }
+  }
 
   // Fetch com logs (usa clone para não consumir o body original)
   async function doFetch(url, options = {}) {
@@ -88,7 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!Array.isArray(dados) || dados.length === 0) {
       lista.innerHTML = `
         <li class="empty-state">
-          <div>Nenhuma transação encontrada.</div>
+          📊<br>
+          Nenhuma transação encontrada.
         </li>
       `;
       return;
@@ -100,9 +119,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const transactionTypeText = t.transactionType === "INPUT" ? "ENTRADA" : "SAÍDA";
       
       li.innerHTML = `
-        <div>
+        <div class="transaction-container">
           <div class="transaction-info">
-            <strong class="${transactionTypeClass}">${transactionTypeText}</strong>
+            <span class="transaction-type ${transactionTypeClass}">${transactionTypeText}</span>
             <div class="transaction-amount">R$ ${Number(t.value ?? 0).toFixed(2)}</div>
             ${t.description ? `<div class="transaction-description">${escapeHtml(t.description)}</div>` : ""}
           </div>
@@ -113,10 +132,10 @@ document.addEventListener("DOMContentLoaded", () => {
               data-transactiontype="${t.transactionType}"
               data-description="${t.description ?? ""}"
               title="Editar transação">
-              ✏️ Editar
+              Editar
             </button>
             <button class="delBtn" data-id="${t.id}" title="Excluir transação">
-              🗑️ Excluir
+              Excluir
             </button>
           </div>
         </div>
@@ -142,14 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Adicionar indicação visual de modo edição
         form.scrollIntoView({ behavior: 'smooth' });
-        
-        // Destacar o formulário visualmente
-        form.style.border = "3px solid #007bff";
-        form.style.background = "#e3f2fd";
-        setTimeout(() => {
-          form.style.border = "";
-          form.style.background = "";
-        }, 2000);
       });
     });
 
@@ -299,7 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       // Redirect após breve delay
       setTimeout(() => {
-        window.location.href = "login.html";
+        window.location.href = "index.html";
       }, 500);
     }
   });
@@ -314,6 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Carregar dados iniciais
+  carregarUsuario();
   carregarTransacoes();
   carregarSaldo();
 });
